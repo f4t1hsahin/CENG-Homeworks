@@ -1,0 +1,209 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+%misc libraries goes here
+%\usepackage{fitch}
+
+
+\begin{document}
+
+\section*{Student Information }
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Adil Kaan Akan \\
+Id Number :  2171155 \\
+
+% Write your answers below the section tags
+\section*{Answer 1}
+\begin{table}[H]
+\small
+\centering
+\caption{ Truth Table for Question1.1 }
+\label{table:example}
+\begin{tabular}{|c|c|c|c|c|c|c|}	%% specify column number
+\hline 							%% line draw
+\textbf{$p$} & \textbf{$q$} & \textbf{$\neg p$} & \textbf{$\neg q$} & \textbf{$p \to q$} & \textbf{$\neg q \land (p \to q$} & \textbf{$(\neg q \land (p \to q) \to \neg p$}\\
+\hline
+\hline
+T & T & F & F & T & F & T \\			%% rows distinguished with &
+T & F & F & T & F & F & T \\
+F & T & T & F & T & F &  T \\
+F & F & T & T  & T & T & T \\
+\hline
+
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\small
+\centering
+\caption{ Truth Table for Question1.2 }
+\label{table:example}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}	%% specify column number
+\hline 							%% line draw
+\textbf{$p$} & \textbf{$q$} & \textbf{$r$} & \textbf{$\neg p$} & \textbf{$p \lor q$}  & \textbf{$(\neg p \lor r)$}& \textbf($q \lor r$) & \textbf{$(p \lor q) \land (\neg p \lor r)$} & \textbf{$((p \lor q) \land (\neg p \lor r)) \to (q \lor r)$}\\
+\hline
+\hline
+T & T & T & F & T & T & T & T & T\\			%% rows distinguished with &
+T & T & F & F & T & F & T & F & T \\
+T & F & T & F & T & T & T & T & T\\
+T & F & F & F & T & F & F & F & T\\
+F & T & T & T & T & T & T & T & T\\
+F & T & F & T & T & T & T & T & T\\
+F & F & T & T & T & T & T & F & T\\
+F & F & F & T & F & T & F & F & T\\
+\hline
+
+\end{tabular}
+\end{table}
+
+\section*{Answer 2}
+$(p \to q) \lor (p \to r) \equiv (\neg q \land \neg r) \to \neg p$ \textit{Given} \\
+
+$(p \to q) \lor (p \to r) \equiv (\neg p \lor q) \lor (\neg p \lor r)$  \textbf{Table 7} \\
+
+$(\neg p \lor q) \lor (\neg p \lor r) \equiv (\neg p \lor \neg p) \lor (q \lor r)$ \textbf{Associative law}\\
+
+$(\neg p \lor \neg p) \lor (q \lor r) \equiv \neg p \lor (q \lor r)$ \textbf{Idempotent law} \\
+
+$\neg p \lor (q \lor r) \equiv q \lor r \lor \neg p$ \textbf{Commutative law} \\
+
+$(\neg q \land \neg r) \to \neg p \equiv \neg(\neg q \land \neg r) \lor \neg p$ \textbf{Table 7}\\
+
+$\neg(\neg q \land \neg r) \lor \neg p \equiv q \lor r \lor \neg p$ \textbf{De Morgan law} \\
+
+$q \lor r \lor \neg p \equiv q \lor r \lor \neg p$ \textit{Result}\\
+
+\section*{Answer 3}
+1. \\
+a)Every cat has at least one friend which is dog.\\
+b)There exists a cat that is friends with all dogs. \\
+2.\\
+a)$\forall_x\forall_y(Meal(y) \land Eats(x,y) \to Customer(x))$ \\
+b)$\neg \exists_x(Chef(x) \to \forall_y(Meal(y) \to Cooks(x,y))$ \\
+c)$\exists_x\forall_y\exists_z(Customer(x) \land Chef(z) \land Meal(y) \land Cooks(z,y) \land Eats(x,y) \land \forall_t(chef(t) \land Cooks(t,y) \to t = z))$ \\
+d)$\forall_x\exists_y(Chef(x) \to Chef(y) \land Knows(x,y) \land \forall_z(Meal(z) \land Cooks(y,z) \to \neg Cooks(x,z)))$
+
+
+
+\section*{Answer 4}
+\begin{table}[H]
+\small
+\caption{Truth Table for Deduction rule}
+\centering
+\label{table3}
+\begin{tabular}{|c|c|c|c|c|}	%% specify column number
+\hline 							%% line draw
+\textbf{p} & \textbf{q} & \textbf{$\neg p $} & \textbf{$p \rightarrow q$} & \textbf{$ \neg q$}  \\
+\hline
+\hline
+T & T & F & T & F \\			%% rows distinguished with &
+T & F & F & F & T \\
+F & T & T & T & F \\
+F & F & T & T & T \\
+\hline
+\end{tabular}
+\end{table}
+
+Natural deduction says that if we have premises that are true, then the right hand side 	proposition will also be true. However, when we build a truth table, in the cases where premises are true, we do not have true right hand side proposition. Therefore, this system cannot be deduction rule.
+
+\section*{Answer 5}
+\begin{table}[H]
+	\centering
+	\caption{Answer to the 5th question }
+	\begin{tabular}{*6{l}}
+		$1$ & & & $p \to q$ & \textit{premise} & \\
+		$2$ & & & $q \to r$ & \textit{premise} & \\
+
+		$3$ & & & $r \to p$ &\textit{premise} &\\
+
+		\hline
+
+		$4$ & & & $p$ & \textit{assumption} &\\
+
+		$5$ & & & $q$ & $\rightarrow_e,1$ &\\
+
+		$6$ & & & $r$ & $\rightarrow_e,2$ &\\
+
+		\hline
+
+		$7$ & & & $p \to r$ & $\rightarrow_i,4-6$ &\\
+
+
+		$8$ & & & $p \leftrightarrow r$ & $\leftrightarrow_i,3,7$ &\\
+
+		\hline
+
+		$9$ & & & $q$ & \textit{assumption} &\\
+
+		$10$ & & & $r$ & $\rightarrow_e,2$ &\\
+
+		$11$ & & & $p$ & $\rightarrow_e,3$ &\\
+
+		\hline
+
+		$12$ & & & $q \to p$ & $\rightarrow_i,9-11$ &\\
+
+		$13$ & & & $p \leftrightarrow q$ &$\leftrightarrow_i,1,12$ &\\
+
+		$14$ & & & $(p \leftrightarrow r) \land (p \leftrightarrow q)$ & $\land_i,5,8$ &\\
+
+
+
+
+	\end{tabular}
+\end{table}
+
+\section*{Answer 6}
+\begin{table}[H]
+	\centering
+	\caption{Answer to the 6th question }
+	\begin{tabular}{*6{l}}
+		$1$ & & & $\forall(Q(x) \to P(x))$ & \textit{premise} & \\
+		$2$ & & & $\exists(P(x) \to Q(x))$ & \textit{premise} & \\
+
+		$3$ & & & $\forall P(x)$ &\textit{premise} &\\
+
+		$4$ & & & $Q(x) \to P(x)$ & $\forall_e,1$ &\\
+
+		
+
+		\hline
+
+		$5$ &  &  & $P(c) \to Q(c)$ &\textit{assumption} &\\
+		
+		$6$ & & & $P(c)$ & $\forall_e,3$ &\\
+
+
+		$7$ & & & $Q(c)$ &$\rightarrow_e,5,6$ &\\
+
+		$8$ & & & $R(c)$ & $\rightarrow_e,4,7$ &\\
+
+		$9$ & & & $P(c) \land R(c)$ & $\land_i,5,8$ &\\
+
+
+
+		$10$ & & & $\exists(P(x) \land R(x))$ & $\exists _i,9$ & \\
+
+		\hline
+
+		$11$ & & & $\exists(P(x) \land R(x))$ & $\exists _e,2,6-10$ & \\
+
+
+	\end{tabular}
+\end{table}
+
+
+\end{document}

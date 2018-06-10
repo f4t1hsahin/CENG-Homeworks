@@ -1,0 +1,246 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{fixltx2e}
+
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+%misc libraries goes here
+
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Adil Kaan Akan\\
+Id Number :  2171155\\
+
+% Write your answers below the section tags
+\section*{Answer 1}
+\begin{table}[H]
+\small
+\centering
+\caption{ Membership table for part a}
+\label{table:example}
+\begin{tabular}{|c|c|c|c|c|c|c|}	
+\hline 							
+\textbf{$A$} & \textbf{$B$} & \textbf{$\overline{A}$} & \textbf{$\overline{B}$} & \textbf{$A\cap B$} & \textbf{$(A \cup \overline{B})\cap(\overline{A} \cup B)$}& \textbf{$(A \cup \overline{B})\cap(\overline{A} \cup B) \cap (A\cap B)$}\\
+\hline 
+\hline 
+1 & 1 & 0 & 0 & 1 & 1 & 1\\			
+1 & 0 & 0 & 1 & 0 & 0 & 0\\
+0 & 1 & 1 & 0 & 0 & 0 & 0\\
+0 & 0 & 1 & 1 & 0 & 1 & 0\\
+\hline 
+
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\small
+\centering
+\caption{ Membership table for part b}
+\label{table:example}
+\begin{tabular}{|c|c|c|c|c|c|c|}	
+\hline 							
+\textbf{$A$} & \textbf{$B$} & \textbf{$\overline{A}$} & \textbf{$\overline{B}$} & \textbf{$\overline{A} \cap \overline{B}$} & \textbf{$(A \cup \overline{B})\cap(\overline{A} \cup B)$} & \textbf{$(A \cup \overline{B})\cap(\overline{A} \cup B) \cap (\overline{A} \cap \overline{B})$} \\
+\hline 
+\hline 
+1 & 1 & 0 & 0 & 0 & 1 & 0\\			
+1 & 0 & 0 & 1 & 0 & 0 & 0\\
+0 & 1 & 1 & 0 & 0 & 0 & 0\\
+0 & 0 & 1 & 1 & 1 & 1 & 1\\
+\hline 
+
+\end{tabular}
+\end{table}
+
+\section*{Answer 2}
+
+Firstly, $f^-1((A \cap B)xC) \subseteq f^-1(AxC) \cap f^-1(BxC)$. \\
+
+Let $x \in f^-1((A \cap B)xC)$.Then, with property of inverse fuction we have \\
+
+
+$f(x) \in ((A \cap B)xC)$ \\ 
+
+With Distributive law, we have \\
+
+$f(x) \in (AxC)  \cap (BxC)$ 
+
+With the definition of the intersection \\
+
+$f(x) \in (AxC) \land f(x) \in  (BxC)$ \\
+
+
+If we use property of inverse function again \\
+
+$f^-1(AxC) \cap f^-1(BxC)$ \\
+
+Since they are equivalent, $f^-1((A \cap B)xC)$ is subset of $f^-1(AxC) \cap f^-1(BxC)$.
+
+Similarly for $f^-1(AxC) \cap f^-1(BxC) \subseteq f^-1((A \cap B)xC)$ \\
+
+By definition of intersection, assume $x \in f^-1(AxC) \land x \in f^-1(BxC)$ \\
+
+with the property of inverse function. \\
+
+$f(x) \in (AxC) \land f(x) \in (BxC)$ \\
+
+With property of intersection \\
+
+$f(x) \in (AxC) \cap (BxC)$ \\
+
+$f(x) \in (A \cap B)x C$ \\
+
+with the property of inverse function again. \\
+
+$f^-1((A \cap B)x C) \in x$ \\
+
+Since they are equivalent, $f^-1(AxC) \cap f^-1(BxC)$ is subset of $f^-1((A \cap B)xC)$
+ 
+
+	
+
+
+
+
+\section*{Answer 3}
+
+\subsection*{a)} 
+
+For one-to-one function, we need for all values of x the function has different value y. However, for $x_1=1$ and $x_2=-1$, the function has the same value $y = ln(6)$.   Therefore, it is not one-to-one on its domain. Moreover, to ln function have negative values, inside of function must be less than 1. In our case, $x^2+5$ always greater or equal than $0$. It cannot have any values greater than $ln(5)$. Thus, since the function does not have any value less than $ln(5)$ in its range, it is not onto on its domain.\\
+\\
+\subsection*{b)}
+
+For one-to-one function, we need for all values of x the function has different value y.Let $x_1$ and $x_2$ be element of $\mathbb{R}$ and different from each other. \\
+
+$y_1 = e^{e^{x_1^7}}$ and $y_2 = e^{e^{x_2^7}}$ \\
+
+It is obvius that for every distinct $x_1$ and $x_2$, $y_1$ and $y_2$ cannot be equal.
+Therefore, the function $e^{e^{x^7}}$ is one-to-one. \\
+Moreover, the exponential function does not have any negative value. Since range of function is not same as the domain (Domain has negative values but function not), is not onto its domain.
+
+
+\section*{Answer 4}
+\subsection*{a)}
+
+Since the sets $A$ and $B$ are countable, we have enumeration. \\
+${a_1,a_2,a_3,a_4,a_5,....}$ \\
+${b_1,b_2,b_3,b_4,b_5,....}$ \\
+
+
+
+We can show $AxB$ with infinite table such that \\
+$(a_1,b_1),(a_1,b_2),(a_1,b_3),(a_1,b_4),(a_1,b_5).....$ \\
+$(a_2,b_1),(a_2,b_2),(a_2,b_3),(a_2,b_4),(a_2,b_5).....$ \\
+$(a_3,b_1),(a_3,b_2),(a_3,b_3),(a_3,b_4),(a_3,b_5).....$ \\
+
+Now we can count $AxB$'s elements by processing diagonally. First, take $(a_1,b_1)$. Then, take $(a_1,b_2)$ and $(a_2,b_1)$. Then, take $(a_1,b_3)$, $(a_2,b_2)$ and $(a_3,b_1)$. We can see that all of the elements of $AxB$ can be listed, and there is a particular number which is element of $\mathbb{N}$ to index each of $AxB$'s elements with. Since it can be shown with enumeration, it is countable.
+ 
+\subsection*{b)}
+
+We have $A$ is uncountable and $A \subseteq B$ \\
+Suppose B is countable. Since $B$ is countable, there exists an injection $i : B \rightarrow  \mathbb{N}$ and since $A \subseteq B$, there exists an injection $f : A  \rightarrow B$. Then, since composite of injections are also injection, there should an injection such that $i \circ f : A \rightarrow \mathbb{N}$. However, this is a contradiction because injection $i \circ f : A \rightarrow \mathbb{N}$ express that A is countable but A is given as uncountable. Therefore, B cannot be countable set, it is uncountable.
+
+
+
+\subsection*{c)}
+
+We have $B$ is countable set and $A \subseteq B$ \\
+Since $B$ is countable, we have injection from $f:B \rightarrow \mathbb{N}$ and since $A \subseteq B$, there exists $ i: A \rightarrow B$ inclusion mapping and that inclusion mapping i is also injection. Since composite of injections are also injection, we have $f \circ i : A \rightarrow \mathbb{N}$. Since we have injection from $A$ to $\mathbb{N}$, the set $A$ is also countable set.
+
+
+\section*{Answer 5}
+\subsection*{a)}
+
+If $f_1(x)$ is $O(f_2(x))$, then we have \\
+$f_1(x) \leq c * f_2(x)$ \\
+
+Since $ln$ is monotone increasing function, hence for sufficiently large x, \\
+
+We can have $ln(f_1(x)) \leq ln(c*f_2(x))$ \\
+
+$ln(f_1(x)) \leq ln(c) + ln(f_2(x))$ \\
+
+Then we can introduce new constant $d$ which is element of $\mathbb{R}_>1$ \\
+
+$ln(f_2(x)) + ln(c) \leq d*ln(f_2(x))$ that is true if : \\
+
+$\dfrac{ln(c)}{ln(f_2(x))} + 1 \leq d$ since the function $f_2$ is increasing, the  $\dfrac{ln(c)}{ln(f_2(x))}$ term gets closer to zero for k value which can be large. Then, we have \\
+
+$0 + 1 \leq d$ and we can find such d. \\
+
+Then, we can write, \\ 
+ 
+$ \mid ln(f_1(x)) \mid \leq d * \mid ln(f_2(x)) \mid$ for values larger than k, and this means that \\
+
+$ln(f_1(x))$ is $O(ln(f_2(x))$
+
+
+\subsection*{b)}
+
+Suppose $f_1(x) = 2n$, then  we have $f_2(x) = n$, since $n$ is $O(n)$(we can find $c$ and $k$ such that $\mid 2n \mid \leq c * \mid n \mid$ for values larger than k). \\
+
+However, $3^2n$ is not  $O(3^n)$ by the following. 
+
+$3^2n \leq c * 3^n$ \\
+$ln(3)* 2n \leq ln(c) + ln(3) * n$ \\
+$2n \leq ln(c) + n$ \\ 
+$n \leq ln(c)$
+
+That is wrong because there cannot be a constant such that satisfies the equation. \\ 
+Therefore, given equation is not correct.
+
+
+\section*{Answer 6}
+\subsection*{a)}
+
+$(3^x - 1)mod(3^y - 1)  = 3^(x mod y) - 1$ \\
+
+$x mod y $ is equal to $x - yk$ by $x mod y = a$ then $x = y*k+a$, $a = x -y*k$ \\
+
+$(3^x - 1)mod(3^y - 1)  = 3^(x - y*k) - 1$ \\ 
+
+$(3^x - 1)mod(3^y - 1) - 3^(x - y* k) + 1 = 0$ \\
+
+$(3^x - 1 - 3^(x - y* k) + 1)mod(3^y - 1) = 0$ \\
+
+$3^x(1 - 3^y*k) mod (3^y - 1) = 0$ \\
+
+
+We can think $1 - 3^y*k$ as $1^k - 3^y*k$. Then, in $1^k - 3^y*k$, we have the term $1-3^y$. Since it is divisible by $3^y - 1$, then $3^x(1 - 3^y*k)$ in $mod (3^y - 1)$ equals to zero.Therefore, $(3^x - 1)mod(3^y - 1)  = 3^(x mod y) - 1$ is correct.
+ 
+
+
+
+\subsection*{b)}
+
+gcd(123,277) = gcd(123,31) = gcd(31,30) = gcd(1,0) = 1 \\
+
+I.e \\
+
+
+gcd(123,277) shows that \quad $277  = 123 * 2 + 31 $ \\
+gcd(123,31) shows that \quad $123  = 31* 3 + 30$ \\
+gcd(31,30) shows that  \quad $31  = 30* 1 + 1$ \\
+
+Eventually, we get the result 1 which is greatest common divisor of the 123 and 277.
+
+
+
+\end{document}
+
+​
+
