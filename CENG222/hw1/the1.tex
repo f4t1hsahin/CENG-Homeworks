@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+\newcommand{\HRule}{\rule{\linewidth}{1mm}}
+
+%misc libraries goes here
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+
+\begin{document}
+
+\noindent
+\HRule \\[3mm]
+\begin{flushright}
+
+                                         \LARGE \textbf{CENG 222}  \\[4mm]
+                                         \Large Statistical Methods for Computer Engineering \\[4mm]
+                                        \normalsize      Spring '2017-2018 \\
+                                           \Large   Take Home Exam 1 \\
+                    \normalsize Deadline: May 25, 23:59 \\
+                    \normalsize Submission: via COW
+\end{flushright}
+\HRule
+
+\section*{Student Information }
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Adil Kaan Akan\\
+Id Number :  2171155 \\
+
+% Write your answers below the section tags
+\section*{Answer 3.8}
+There four possibilities each of them has same probability which is 1/4. \\
+
+E(x) = $\sum\limits_{x=0}^{3} x*P(X=x) = 0*1/4 + 1*1/4+2*1/4+3*/1/4 = 1.5$ \\
+Var(x) = $E(x^2) - (E(x))^2 = 1*1/4+2^2*1/4+3^2*1/4 - (3/2)^2 = 1.25$ \\
+
+
+
+
+\section*{Answer 3.15}
+\subsection*{a.}
+We can get the answer by calculating the possibility of no errors in each lab and substracting it from 1.\\
+$P(at least 1 failure) = 1 - P(0 failures in each lab) = 1 - P(0,0) = 1 - 0.52  = 0.48$ \\
+\subsection*{b.}
+For being independent events, for every x and y, $P_{XY}(x,y) = P_X(x) * P_Y(y)$ must be true. Since we can show a counterexample for it which is $P_{XY}(0,0) = 0.52 \neq P_X(0)* P_Y(0) = (0.52+0.14+0.06)*(0.52+0.20+0.04) = 0.55$. So, they are not independent, they are dependent events.
+
+
+
+\section*{Answer 3.19}
+\subsection*{a.}
+$E(X) = \sum\limits_x x*P(X=x) = 2*0.5 + (-2)*0.5 = 0$ \\
+$Var(X) = E(x^2) - (E(x))^2 = 200^2 * 0.5 + (-200)^2 * 0.5 = 40000$ \\
+\subsection*{b.}
+$E(Y) = \sum\limits_y y*P(Y=y) = 4*0.2 + (-1)*0.8 = 0$ \\
+$Var(Y) = E(y^2) - (E(y))^2 = 400^2 * 0.2 + (-100)^2 * 0.8$ \\
+\subsection*{c.}
+Define $T = 50*X +50*Y$ \\
+$E(T) = E(50*X) + E(50*Y) = 50*E(X) + 50*E(Y) = 50*0+50*0 = 0$ \\
+$Var(T) = E(t^2) - (E(t))^2  = 100^2 * 0.5 + 100^2 * 0.5 + 200^2 * 0.2 + 50^2 *0.8 = 20000$
+ 
+
+\section*{Answer 3.29}
+Define X as a possion distribution with $\lambda = 0.1$ for the possibility of the low risk drivers to crash. \\
+Define Y as possion distribution with $\lambda = 1$ for the possibility of the higher risk drivers to crash. \\
+Probability of the low risk drivers is P(Low risk drivers) = 0.8 \\
+Probability of the high risk drivers is P(High risk drivers) = 0.2 \\
+P(No crashes | Low risk drivers) = $(\lambda^0)/0!)*e^{-\lambda} = e^{-0.1}$ \\
+P(No crashes | High risk drivers) = $(\lambda^0/0!)*e^{-\lambda} = e^{-1}$ \\
+
+P(High Risk drivers | No crashes) = \\(P(No crashes | High risk drivers)*P(High risk drivers))/(P(No crashes | High risk drivers)*P(High risk drivers) + P(No crashes | Low risk drivers) * P(Low risk drivers)) \\ \\
+
+$ = \frac{0.2*e^{-1}}{0.2*e^{-1}+0.8*e^{-0.1}} = 0.0922$
+
+
+\end{document}

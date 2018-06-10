@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+\newcommand{\HRule}{\rule{\linewidth}{1mm}}
+
+%misc libraries goes here
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+
+\begin{document}
+
+\noindent
+\HRule \\[3mm]
+\begin{flushright}
+
+                                         \LARGE \textbf{CENG 222}  \\[4mm]
+                                         \Large Statistical Methods for Computer Engineering \\[4mm]
+                                        \normalsize      Spring '2017-2018 \\
+                                           \Large   Take Home Exam 1 \\
+                    \normalsize Deadline: May 25, 23:59 \\
+                    \normalsize Submission: via COW
+\end{flushright}
+\HRule
+
+\section*{Student Information }
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Adil Kaan Akan\\
+Id Number :  2171155\\
+
+% Write your answers below the section tags
+\section*{Answer 1}
+Firstly, we found what number of experiments should be from the formula given in the book with the name size of the Monte Carlo study. Since we do not know preliminary estimator for p, we use the following formula,\\
+\begin{align*}
+N \geq 0.25*(\frac{z_{\alpha/2}}{\epsilon})^2
+\end{align*}
+We should simulate the situation at leats approximately 39000 times.
+Using the integral we can found the probability of a minion with the relationship which is $W \geq 2*S$, and we found it approximately 0.26.
+Then,using the built in poisson random variable function poissrnd, we get the number of minions we caught.(Since number of caught minions is poisson random variable). After that, we get n random variables where n is the number of minions we get. Then, we found how many of them has the relationship we want, and if it is greater than 6, we are successful.
+
+
+
+\section*{Answer 2}
+Like first part, again we should simulate the experiment approximately 39000 times. We should use the rejection method algorithm. Rejection method says that choose three numbers a,b,c and i choose 0, 10, and $\frac{1}{e^1}$ respectively. Again, we using poissrnd we get the number of minions we caught. By rejection method algoritm, we get 2 random variables and changing our parameters x value and y value according to them. We should do the algorithm for every minion we caught. After doing that we calculate the weights of the minions.
+
+
+
+\section*{Answer 3}
+A big number of simulation goes us to expection of the function. I did 1000 experiments and in each experiment, i get 2 random variables a and b, where a is exponential random variable and b is normal random variable. Put them into function get the total value and sum all of total values while the experiment goes on. Then, if we divide it by number of experiments, we will get the expectation of the function.
+
+
+
+
+\end{document}
