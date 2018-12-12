@@ -1,0 +1,17 @@
+ Activation function: tanh
+ Loss function: categorical_crossentropy
+ Layers: (512, 256)
+ Test set evaluation: [('loss', 3.709225805735184), ('categorical_accuracy', 0.4533898305084746), ('top2_acc', 0.6877118644067797), ('top3_acc', 0.8224576273206937)]
+ Confusion Matrix
+ ['Horror', 'Crime', 'Romance', 'War', 'Western', 'Action', 'Comedy', 'Musical']
+ [[163  23  20   8   7  44  23   7]
+  [ 25  95  18   8  17  93  29  10]
+  [ 14  19  95  22   9  30  65  41]
+  [  9   7  22 166  24  45  10  12]
+  [ 10   8   5  16 220  20   7   9]
+  [ 28  66  20  22  13 111  26   9]
+  [ 14  36 105   6   2  44  62  26]
+  [  9   6  48  13  14  23  24 158]]
+
+
+[3.709225805735184, 0.4533898305084746, 0.6877118644067797, 0.8224576273206937)]

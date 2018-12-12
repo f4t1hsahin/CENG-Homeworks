@@ -1,0 +1,17 @@
+Activation function: sigmoid
+Loss function: categorical_hinge
+Layers: (512, 256)
+Test set evaluation: [('loss', 1.120592946117207), ('categorical_accuracy', 0.41271186430575485), ('top2_acc', 0.6860169489504927), ('top3_acc', 0.8122881353911707)]
+Confusion Matrix
+['Horror', 'Crime', 'Romance', 'War', 'Western', 'Action', 'Comedy', 'Musical']
+[[124  15  24   0   0  58  72   2]
+ [ 10  79  10   0   5  83 107   1]
+ [  5  17 104   8   4  24 124   9]
+ [  4   5  47  95   7  82  53   2]
+ [  8  12  15  21 170  38  27   4]
+ [ 13  48  18   7   2 141  63   3]
+ [  3  12  54   3   0  33 188   2]
+ [  5   3  98   1   2  23  90  73]]
+
+
+[ 1.120592946117207, 0.41271186430575485, 0.6860169489504927, 0.8122881353911707)]

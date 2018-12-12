@@ -1,0 +1,17 @@
+Activation function: leaky_relu
+Loss function: categorical_hinge
+Layers: (512, 256)
+Test set evaluation: [('loss', 1.0984272110260138), ('categorical_accuracy', 0.4508474578291683), ('top2_acc', 0.990254237086086), ('top3_acc', 0.9991525423728813)]
+Confusion Matrix
+['Horror', 'Crime', 'Romance', 'War', 'Western', 'Action', 'Comedy', 'Musical']
+[[160  29  12   3  11  24  52   4]
+ [ 16 109   7   2  16  69  74   2]
+ [ 10  15  53  15  12  26 156   8]
+ [  7  12  22 142  27  46  36   3]
+ [  5   8   1  13 242   7  16   3]
+ [ 26  76  14  14   9  94  59   3]
+ [  7  22  34   5   2  31 192   2]
+ [ 14  11  40   3  16  17 122  72]]
+
+
+[1.0984272110260138, 0.4508474578291683, 0.990254237086086, 0.9991525423728813)]

@@ -1,0 +1,16 @@
+Activation function: sigmoid
+Loss function: categorical_crossentropy
+Layers: (512, 256)
+Test set evaluation: [('loss', 4.53850045527442), ('categorical_accuracy', 0.16864406779661018), ('top2_acc', 0.3148305084745763), ('top3_acc', 0.4411016949278823)]
+Confusion Matrix
+['Horror', 'Crime', 'Romance', 'War', 'Western', 'Action', 'Comedy', 'Musical']
+[[ 22   4  86   0   0  10 172   1]
+ [  0   8  65   1   0   6 213   2]
+ [  0   1  81   1   0   5 203   4]
+ [  0   1  85   5   3  20 179   2]
+ [  4   2 101   1  10   9 167   1]
+ [  2   6  98   0   0  18 171   0]
+ [  1   2  49   1   0   3 239   0]
+ [  2   4  72   1   0   2 199  15]]
+
+[4.53850045527442, 0.16864406779661018, 0.3148305084745763, 0.4411016949278823)]

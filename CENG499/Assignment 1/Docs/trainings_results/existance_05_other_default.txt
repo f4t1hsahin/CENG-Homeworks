@@ -1,0 +1,19 @@
+MIN_DF = 0.5 , METHOD = EXISTANCE
+
+Activation function: relu
+Loss function: categorical_hinge
+Layers: (512,)
+Test set evaluation: [('loss', 1.3452323566048832), ('categorical_accuracy', 0.325), ('top2_acc', 0.6292372881355932), ('top3_acc', 0.8309322035918801)]
+Confusion Matrix
+['Horror', 'Crime', 'Romance', 'War', 'Western', 'Action', 'Comedy', 'Musical']
+[[114  11   2  19   3 104  40   2]
+ [ 21  17   2  23   7 161  60   4]
+ [ 35   2   6  38  13  77 107  17]
+ [ 27   1   2 110  27 107  14   7]
+ [ 16   4   0  41 152  64  15   3]
+ [ 20   8   2  30   7 181  40   7]
+ [ 21   7   0  32   5  95 129   6]
+ [ 21   2   4  34  14  79  83  58]]
+
+
+[1.3452323566048832, 0.325, 0.6292372881355932, 0.8309322035918801]
