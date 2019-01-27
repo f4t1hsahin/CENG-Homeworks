@@ -1,0 +1,45 @@
+# Author: Adil Kaan Akan
+# ID:2171155
+
+.pos 0
+init:	irmovq Stack,%rsp
+		irmovq ele1,%rdi
+		call rsum_list
+		halt
+
+
+
+# Sample linked list
+.align 8
+ele1:
+.quad 0x00a
+.quad ele2
+ele2:
+.quad 0x0b0
+.quad ele3
+ele3:
+.quad 0xc00
+.quad 0
+
+
+
+rsum_list:
+	rrmovq %rdi, %rcx
+	irmovq $0x0, %rax
+	jmp check
+recurse:
+	mrmovq (%rcx), %rdx
+	rrmovq %rdi, %r8
+	pushq %rdx #since recursive function changes rdx save it
+	mrmovq 0x8(%rcx), %rdi
+	call rsum_list
+	popq %rdx #restore rdx
+	addq %rdx, %rax
+check:
+	rrmovq %rcx, %rsi
+	andq %rsi, %rsi
+	jne recurse
+else:
+	ret
+.pos 0x200
+Stack:

@@ -1,0 +1,53 @@
+# Author: Adil Kaan Akan
+# ID:2171155
+
+
+	.pos 0
+init:
+	irmovq Stack, %rsp
+	irmovq $0x3, %rdx
+	irmovq dest, %rsi
+	irmovq src, %rdi
+	call copy_block
+	halt
+
+
+
+
+.align 8
+# Source block 
+src: 
+	    .quad 0x00a 
+	    .quad 0x0b0 
+	    .quad 0xc00 
+# Destination block 
+dest: 
+	    .quad 0x111 
+	    .quad 0x222 
+	    .quad 0x333
+
+
+
+
+copy_block:
+	irmovq 0x0, %rax
+	irmovq $0x8, %rcx
+	irmovq $1, %r8
+	jmp check
+while:
+	mrmovq (%rdi), %rbx
+	addq %rcx, %rdi
+	rmmovq %rbx, (%rsi)
+	addq %rcx, %rsi
+	xorq %rbx, %rax
+	subq %r8, %rdx
+check:
+	andq %rdx, %rdx
+	jne while
+else:
+	ret
+
+.pos 0x200
+
+Stack:
+

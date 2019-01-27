@@ -1,0 +1,258 @@
+#/* $begin ncopy-ys */
+##################################################################
+# ncopy.ys - Copy a src block of len words to dst.
+# Return the number of positive words (>0) contained in src.
+#
+# Include your name and ID here.
+# Adil Kaan Akan
+# 2171155
+# Describe how and why you modified the baseline code.
+# implement 8-way unrolling
+# take care of remainders with jump table
+# in order to prevent data hazards such that write instruction waits
+# the value read from the memory in memory stage
+# sometimes read from memory early or together
+# in unrolling part first read 4 registers than read other 4 registers
+# writing 2 by 2 to the memory in unrolling part
+# checking the value is greater than zero for incrementing count
+# after 8 value read and written update the rdi rsi and rdx
+# 
+# for remaining part i use a jump table
+# jump table contains address each of which is a 8 byte address
+# we can jump the entries with length * 8
+# instead of length * 8, add rdx to rdx 3 times
+# then get value from the jump table address
+# push it to the top of stack
+# then by using the ret instruction jump to the respective entry
+# i read the first value before the jump but there is no change
+# it can be read after the jump
+# i think that is all, i also provide some comments next to the codes
+##################################################################
+# Do not modify this portion
+# Function prologue.
+# %rdi = src, %rsi = dst, %rdx = len
+ncopy:
+
+##################################################################
+# You can modify this portion
+	# Loop header
+	#xorq %rax,%rax		# count = 0;
+	iaddq $-7, %rdx
+	jle jmp_table_enter
+		
+read0_3_write0_1:	
+    mrmovq (%rdi), %r9	    
+    mrmovq 8(%rdi), %r10	
+    mrmovq 16(%rdi), %r11
+    mrmovq 24(%rdi), %r12
+    #read first 4 values
+
+    rmmovq %r9, (%rsi)	    
+	rmmovq %r10, 8(%rsi)
+
+	#write first 2 values
+	# check for the first is greater than zero
+	#if it is, increment
+	#else then pass increment
+
+    andq %r9, %r9           
+    jle check_second              
+    iaddq 1, %rax		    
+check_second:
+	#check the second value is greater than zero
+	# if it is increment
+	# else then pass increment
+
+    andq %r10, %r10         
+    jle write2_4             
+	iaddq 1, %rax		    
+
+write2_4:
+	#write the third and fourth values
+
+    rmmovq %r11, 16(%rsi)	
+	rmmovq %r12, 24(%rsi)	
+	
+	#again same logic, check the value is greater than 0
+	# then increment or pass the increment
+    andq %r11, %r11         
+    jle check_third              
+	iaddq 1, %rax		    
+
+check_third:
+	# check for fourth value is greater than 0
+	# same logic
+    andq %r12, %r12         
+    jle read5_8_write5_6             
+	iaddq 1, %rax		    
+
+read5_8_write5_6:
+	#read the next four values from memory
+    mrmovq 32(%rdi), %r9	
+    mrmovq 40(%rdi), %r10	
+    mrmovq 48(%rdi), %r11
+    mrmovq 56(%rdi), %r12
+    rmmovq %r9, 32(%rsi)	
+    rmmovq %r10, 40(%rsi)	
+	#write 5th and 6th values
+	# check for fifth is greater than zero
+	# increment or pass 
+    andq %r9, %r9           
+    jle check_sixth              
+	iaddq 1, %rax		    
+
+check_sixth:
+	#check for sixth value is greater than zero
+    andq %r10, %r10         
+    jle write6_7              
+	iaddq 1, %rax		    
+
+write6_7:
+	#write the last 2 elements
+    rmmovq %r11, 48(%rsi)	
+	rmmovq %r12, 56(%rsi)	
+	#check for 7th value > 0
+    andq %r11, %r11         
+    jle check_eigth            
+	iaddq 1, %rax		    
+
+check_eigth:
+	#check for 8th value > 0
+    andq %r12, %r12	        
+    jle loop_update          
+	iaddq 1, %rax	        
+
+#loop update
+#make rdi skip 8 elements
+#make rsi skip 8 elements
+#decrement length by 8
+# 8-way unrolling
+loop_update:
+	iaddq $64, %rdi
+	iaddq $64, %rsi
+	iaddq $-8, %rdx
+	jg read0_3_write0_1
+
+# remaining cases
+# when coming to the jump table enter
+# length is negative, since we check it by iaddq by -7
+# therefore jump table end is put to the length of 7
+# since when length is 7 we have 0 in rdx
+# we need to jump to the length 7
+# the others are negative values
+# for negative values we will jump the upper portions of jump table
+#since jumple table is aligned address of 8
+#we need  8 * length value
+#we can get it by adding to itself 3 times
+# rdx = rdx + rdx => rdx = rdx * 2 
+# rdx = rdx + rdx => rdx = 2*rdx+2*rdx = 4 * rdx
+# rdx = rdx + rdx => rdx = 4*rdx+4*rdx = 8 * rdx
+# read first two value in order to prevent
+# pipelining architecture from stalling in the next cycles
+# we can read even when the length of the array is 0
+# for jumping the respective address of jump table
+# push the 8 * rdx => length * 8 to the stack
+# then using ret instruction we can go the address top of the stack
+
+jmp_table_enter:
+	addq %rdx, %rdx
+	addq %rdx, %rdx
+	addq %rdx, %rdx
+	mrmovq last_entry_jump_table(%rdx), %rdx #read from the jump table 
+	mrmovq (%rdi), %r8
+	pushq %rdx
+	ret #jump to table with respective length
+
+#.align 8
+	.quad Done
+	.quad len1
+	.quad len2
+	.quad len3
+	.quad len4
+	.quad len5
+	.quad len6
+last_entry_jump_table:
+	.quad len7
+
+len7:
+	#if enter from length seven
+	# read last two
+	# write the last one only
+	mrmovq 48(%rdi), %r11 
+	mrmovq 40(%rdi), %r10 
+	rmmovq %r11, 48(%rsi) 
+	andq %r11, %r11
+	#check for incrementing count
+	jle len6_check
+	iaddq $1, %rax
+len6:
+	# if length is 6
+	# there is no way to access read in length 7
+	# therefore read again
+	# it is making it slower when length 7 comes
+	# but there is no way to know the array length
+	# read again for 
+	mrmovq 40(%rdi), %r10
+len6_check:
+	# we read the 6th one
+	# read the 5th one for data hazard
+	# write the 6th and check for incrementing count
+	mrmovq 32(%rdi), %r11
+	rmmovq %r10, 40(%rsi)
+	andq %r10, %r10
+	jle len5_check
+	iaddq $1, %rax
+#same logic above
+len5:
+	mrmovq 32(%rdi), %r11
+len5_check:
+	mrmovq 24(%rdi), %r10
+	rmmovq %r11, 32(%rsi)
+	andq %r11, %r11
+	jle len4_check
+	iaddq $1, %rax
+#same logic above
+len4:
+	mrmovq 24(%rdi), %r10
+len4_check:
+	mrmovq 16(%rdi), %r11
+	rmmovq %r10, 24(%rsi)
+	andq %r10, %r10
+	jle len3_check
+	iaddq $1, %rax
+#same logic above
+len3:
+	mrmovq 16(%rdi), %r11
+len3_check:
+	mrmovq 8(%rdi), %r9
+	rmmovq %r11, 16(%rsi)
+	andq %r11, %r11
+	jle len2_check
+	iaddq $1, %rax
+
+len2:
+	mrmovq 8(%rdi), %r9
+len2_check:
+	#write the second one and check for inrementing count
+	rmmovq %r9, 8(%rsi)
+	andq %r9, %r9
+	jle len1
+	iaddq $1, %rax
+len1:
+	#no need to read again we read it before the jump
+	#write the first value and check for incrementing count
+	rmmovq %r8, (%rsi)
+	andq %r8, %r8
+	jle Done
+	iaddq $1, %rax
+
+
+##################################################################
+# Do not modify the following section of code
+# Function epilogue.
+Done:
+	ret
+##################################################################
+# Keep the following label at the end of your function
+End:
+#/* $end ncopy-ys */
